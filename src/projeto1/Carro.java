@@ -14,13 +14,29 @@ public class Carro {
 	private byte numDeMarchas;
 	private boolean temCambioAutomatico;
 	private short volumeDeCombustivel;
+	private byte marchaAtual;
+	
+	public Carro() {
+		this.marchaAtual = 0;
+	}
 	
 	public void acelera() {
-		this.setVelocidadeAtual(this.getVelocidadeAtual() + 1);
+		int velFutura = this.getVelocidadeAtual() + 1;
+		
+		if (velFutura <= this.getVelocidadeMaxima()) {
+			this.setVelocidadeAtual(velFutura);
+			System.out.println("A velocidade aumentou para " + this.getVelocidadeAtual() + " km/h");
+		} else {
+			System.out.println("A velocidade máxima já foi atingida!");
+		}
 	}
 	
 	public void freia() {
 		this.setVelocidadeAtual(0);
+	}
+	
+	public void trocaMarcha(String marcha) {
+		
 	}
 	
 	public String getModelo() {
