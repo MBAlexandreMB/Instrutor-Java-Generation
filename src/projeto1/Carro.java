@@ -24,6 +24,7 @@ public class Carro {
 		
 		this.proprietario = proprietario;
 		this.marchaAtual = 0;
+		this.velocidadeAtual = 0;
 	}
 	
 	public void acelera() {
@@ -39,6 +40,7 @@ public class Carro {
 	
 	public void freia() {
 		this.setVelocidadeAtual(0);
+		System.out.println("O carro freou (0km/h)!");
 	}
 	
 	public void trocaMarcha(byte novaMarcha) {

@@ -67,6 +67,12 @@ public class Proprietario {
 	public void setDataDeNascimento(String dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 	
 	// Os getters e setters abaixo foram substituidos pela classe "Endereco" no passo 12 do projeto 1
 	// ---------------------
