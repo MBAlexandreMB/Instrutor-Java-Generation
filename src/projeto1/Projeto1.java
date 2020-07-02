@@ -1,11 +1,15 @@
 package projeto1;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Projeto1 {
 
 	public static void main(String[] args) {
 		Endereco novoEndereco = new Endereco("rua 1", "bairro 1", "cidade 1", "estado 1", "cep 1", "complemento 1");
 		Proprietario novoProprietario = new Proprietario("Alexandre", "123.456.789-99", "12.123.456-2", novoEndereco);
-		novoProprietario.setDataDeNascimento("04/10/1991");
+		LocalDate dataNascimento = LocalDate.of(1991, 10, 4);
+		novoProprietario.setDataDeNascimento(dataNascimento);
 		
 		Marca novaMarca = new Marca();
 		novaMarca.setNome("Hyundai");
@@ -40,7 +44,10 @@ public class Projeto1 {
 		System.out.println("  Nome: " + novoCarro.getProprietario().getNome());
 		System.out.println("  CPF: " + novoCarro.getProprietario().getCpf());
 		System.out.println("  RG: " + novoCarro.getProprietario().getRg());
-		System.out.println("  Data de nascimento: " + novoCarro.getProprietario().getDataDeNascimento());
+		System.out.println("  Data de nascimento: " + novoCarro
+														.getProprietario()
+														.getDataDeNascimento()
+														.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 		System.out.println("  Endereço: ");
 		System.out.println("   Rua: " + novoCarro.getProprietario().getEndereco().getRua());
 		System.out.println("   Bairro:" + novoCarro.getProprietario().getEndereco().getBairro());

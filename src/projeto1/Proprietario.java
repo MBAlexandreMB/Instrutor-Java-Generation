@@ -1,10 +1,12 @@
 package projeto1;
 
+import java.time.LocalDate;
+
 public class Proprietario {
 	private String cpf;
 	private String nome;
 	private String rg;
-	private String dataDeNascimento;
+	private LocalDate dataDeNascimento;
 	private Endereco endereco;
 	// Os atributos abaixo foram substituidos pela classe "Endereço" no passo 12 do projeto 1
 	// ---------------------
@@ -61,10 +63,10 @@ public class Proprietario {
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
-	public String getDataDeNascimento() {
+	public LocalDate getDataDeNascimento() {
 		return dataDeNascimento;
 	}
-	public void setDataDeNascimento(String dataDeNascimento) {
+	public void setDataDeNascimento(LocalDate dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}
 	public Endereco getEndereco() {
