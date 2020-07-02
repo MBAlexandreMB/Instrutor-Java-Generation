@@ -16,6 +16,15 @@ public class Carro {
 	private short volumeDeCombustivel;
 	private byte marchaAtual;
 	
+	public Carro(Proprietario proprietario) {
+		if (!(proprietario instanceof Proprietario)) {
+			System.out.println("Proprietario deve ser uma instância da classe Proprietario");
+			return;
+		}
+		
+		this.proprietario = proprietario;
+	}
+	
 	public Carro() {
 		this.marchaAtual = 0;
 	}
