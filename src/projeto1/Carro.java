@@ -135,7 +135,7 @@ public class Carro {
 	public void setTemCambioAutomatico(boolean temCambioAutomatico) {
 		this.temCambioAutomatico = temCambioAutomatico;
 	}
-	public short getVolumeDeCombustivel() {
+	public short getVolumeDeCombustivel() { // Projeto 1, passo 18
 		return volumeDeCombustivel;
 	}
 	public void setVolumeDeCombustivel(short volumeDeCombustivel) {
