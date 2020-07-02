@@ -10,7 +10,28 @@ public class Proprietario {
 	private String cidade;
 	private String estado;
 	private String cep;
-	private String complemento;
+	private String complemento;	
+
+	public Proprietario(String nome, String cpf, String rg) {
+		if (nome == "" || !(nome instanceof String)) {
+			System.out.println("Nome precisa ser preenchido!");
+			return;
+		}
+		
+		if (cpf == "" || !(cpf instanceof String)) {
+			System.out.println("CPF precisa ser preenchido!");
+			return;
+		}
+		
+		if (rg == "" || !(rg instanceof String)) {
+			System.out.println("RG precisa ser preenchido!");
+			return;
+		}
+			
+		this.nome = nome;
+		this.cpf = cpf;
+		this.rg = rg;
+	}
 	
 	public String getCpf() {
 		return cpf;
