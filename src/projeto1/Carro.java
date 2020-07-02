@@ -59,6 +59,10 @@ public class Carro {
 		this.trocaMarcha(marchaFutura);
 	}
 	
+	public int calculaAutonomia(int consumoMedioEmKmPorLitro) {
+		return this.getVolumeDeCombustivel() * consumoMedioEmKmPorLitro;
+	}
+	
 	public String getModelo() {
 		return modelo;
 	}
