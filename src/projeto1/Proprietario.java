@@ -16,7 +16,7 @@ public class Proprietario {
 	//	private String complemento;
 	// ---------------------
 
-	public Proprietario(String nome, String cpf, String rg) {
+	public Proprietario(String nome, String cpf, String rg, Endereco endereco) {
 		if (nome == "" || !(nome instanceof String)) {
 			System.out.println("Nome precisa ser preenchido!");
 			return;
@@ -31,10 +31,16 @@ public class Proprietario {
 			System.out.println("RG precisa ser preenchido!");
 			return;
 		}
-			
+		
+		if (!(endereco instanceof Endereco)) {
+			System.out.println("Endereco precisa ser uma instância da classe Endereco");
+			return;
+		}
+		
 		this.nome = nome;
 		this.cpf = cpf;
 		this.rg = rg;
+		this.endereco = endereco;
 	}
 	
 	public String getCpf() {
