@@ -19,6 +19,10 @@ public class Carro {
 		this.setVelocidadeAtual(this.getVelocidadeAtual() + 1);
 	}
 	
+	public void freia() {
+		this.setVelocidadeAtual(0);
+	}
+	
 	public String getModelo() {
 		return modelo;
 	}
