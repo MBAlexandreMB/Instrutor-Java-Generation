@@ -35,8 +35,18 @@ public class Carro {
 		this.setVelocidadeAtual(0);
 	}
 	
-	public void trocaMarcha(String marcha) {
-		
+	public void trocaMarcha(byte novaMarcha) {
+		if (novaMarcha <= numDeMarchas && novaMarcha >= 0) {
+			this.setMarchaAtual(novaMarcha);
+			System.out.println(novaMarcha + "a marcha foi engatada.");
+		} else {
+			System.out.println("Marcha " + novaMarcha + " não existe nesse carro!");
+		}
+	}
+	
+	private void _reduzMarcha() {
+		byte marchaFutura = (byte) (this.getMarchaAtual() - 1);
+		this.trocaMarcha(marchaFutura);
 	}
 	
 	public String getModelo() {
@@ -116,5 +126,11 @@ public class Carro {
 	}
 	public void setVolumeDeCombustivel(short volumeDeCombustivel) {
 		this.volumeDeCombustivel = volumeDeCombustivel;
+	}
+	public byte getMarchaAtual() {
+		return marchaAtual;
+	}
+	public void setMarchaAtual(byte marchaAtual) {
+		this.marchaAtual = marchaAtual;
 	}
 }
