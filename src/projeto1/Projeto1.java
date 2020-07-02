@@ -7,11 +7,14 @@ public class Projeto1 {
 		Proprietario novoProprietario = new Proprietario("Alexandre", "123.456.789-99", "12.123.456-2", novoEndereco);
 		novoProprietario.setDataDeNascimento("04/10/1991");
 		
+		Marca novaMarca = new Marca();
+		novaMarca.setNome("Hyundai");
+		
 		Carro novoCarro = new Carro(novoProprietario);
 		novoCarro.setModelo("HB20");
 		novoCarro.setCor("Preta");
-		novoCarro.setAno("2015/2016");
-		novoCarro.setMarca("Hyundai");
+		novoCarro.setAno("2015/2016");		
+		novoCarro.setMarca(novaMarca);
 		novoCarro.setChassi("123a456b789c");
 		novoCarro.setVelocidadeMaxima((short) 120);
 		novoCarro.setNumDeMarchas((byte) 5);
@@ -24,7 +27,7 @@ public class Projeto1 {
 		System.out.println(" Modelo: " + novoCarro.getModelo());
 		System.out.println(" Cor: " + novoCarro.getCor());
 		System.out.println(" Ano: " + novoCarro.getAno());
-		System.out.println(" Marca: " + novoCarro.getMarca());
+		System.out.println(" Marca: " + novoCarro.getMarca().getNome());
 		System.out.println(" Chassi: " + novoCarro.getChassi());
 		System.out.println(" Velocidade Máxima: " + novoCarro.getVelocidadeMaxima());
 		System.out.println(" Número de Marchas: " + novoCarro.getNumDeMarchas());

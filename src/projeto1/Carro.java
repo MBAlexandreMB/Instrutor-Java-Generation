@@ -4,7 +4,7 @@ public class Carro {
 	private String modelo;
 	private String cor;
 	private String ano;
-	private String marca;
+	private Marca marca;
 	private String chassi;
 	private Proprietario proprietario;
 	private short velocidadeMaxima;
@@ -83,10 +83,10 @@ public class Carro {
 	public void setAno(String ano) {
 		this.ano = ano;
 	}
-	public String getMarca() {
+	public Marca getMarca() {
 		return marca;
 	}
-	public void setMarca(String marca) {
+	public void setMarca(Marca marca) {
 		this.marca = marca;
 	}
 	public String getChassi() {
