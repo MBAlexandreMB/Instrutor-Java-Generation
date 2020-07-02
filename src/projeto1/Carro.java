@@ -23,9 +23,6 @@ public class Carro {
 		}
 		
 		this.proprietario = proprietario;
-	}
-	
-	public Carro() {
 		this.marchaAtual = 0;
 	}
 	
