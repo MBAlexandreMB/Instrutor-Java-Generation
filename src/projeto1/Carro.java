@@ -42,7 +42,11 @@ public class Carro {
 	}
 	
 	public void trocaMarcha(byte novaMarcha) {
-		if (novaMarcha <= numDeMarchas && novaMarcha >= 0) {
+		if (novaMarcha <= numDeMarchas && novaMarcha >= -1) {
+			if (novaMarcha == -1 && !(this.getVelocidadeAtual() == 0)) {
+				System.out.println("Não é possível engatar a marcha ré com a velocidade diferente de 0km/h");
+				return;
+			}
 			this.setMarchaAtual(novaMarcha);
 			System.out.println(novaMarcha + "a marcha foi engatada.");
 		} else {
