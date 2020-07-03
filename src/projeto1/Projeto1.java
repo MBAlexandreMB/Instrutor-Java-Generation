@@ -38,8 +38,8 @@ public class Projeto1 {
 		System.out.println(" Número de Portas:" + novoCarro.getNumDePortas());
 		System.out.println(" Tem teto solar: " + novoCarro.isTemTetoSolar());
 		System.out.println(" Tem câmbio automático: " + novoCarro.isTemCambioAutomatico());
-		System.out.println(" Volume de combustível: " + novoCarro.getVolumeDeCombustivel());
-		System.out.println(" ");
+		System.out.println(" Volume de combustível: " + novoCarro.getVolumeDeCombustivel() + "\n");
+		
 		System.out.println(" --- Dados do proprietário: ---");
 		System.out.println("  Nome: " + novoCarro.getProprietario().getNome());
 		System.out.println("  CPF: " + novoCarro.getProprietario().getCpf());
@@ -54,9 +54,8 @@ public class Projeto1 {
 		System.out.println("   Cidade:" + novoCarro.getProprietario().getEndereco().getCidade());
 		System.out.println("   Estado:" + novoCarro.getProprietario().getEndereco().getEstado());
 		System.out.println("   CEP:" + novoCarro.getProprietario().getEndereco().getCep());
-		System.out.println("   Complemento:" + novoCarro.getProprietario().getEndereco().getComplemento());
-		
-		System.out.println(" ");
+		System.out.println("   Complemento:" + novoCarro.getProprietario().getEndereco().getComplemento() + "\n");
+
 		System.out.println("Acelerando!");
 		novoCarro.trocaMarcha((byte) 1);
 		novoCarro.acelera();
