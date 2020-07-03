@@ -5,8 +5,14 @@ public class Empregado {
 	private String sobrenome;
 	private double salarioMensal;
 	
-	public Empregado() {
-		
+	public Empregado(String nome, String sobrenome, double salarioMensal) {
+		this.setNome(nome);
+		this.setSobrenome(sobrenome);
+		this.setSalarioMensal(salarioMensal);
+	}
+	
+	public void receberAumento(double aumentoEmPercentual) {
+		this.setSalarioMensal(this.getSalarioMensal() * (1 + aumentoEmPercentual));
 	}
 
 	public String getNome() {
