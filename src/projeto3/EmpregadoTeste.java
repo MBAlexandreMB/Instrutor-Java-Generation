@@ -17,5 +17,8 @@ public class EmpregadoTeste {
 				empregado1.getNome(), empregado1.getSobrenome(), empregado1.getSalarioMensal());
 		System.out.printf("Após o aumento, %s %s recebe R$%.2f por mês%n", 
 				empregado2.getNome(), empregado2.getSobrenome(), empregado2.getSalarioMensal());
+		
+		System.out.println("\nNúmero de empregados: " + empregado1.getNumDeEmpregados());
+		
 	}
 }

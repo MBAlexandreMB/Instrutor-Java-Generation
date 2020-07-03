@@ -4,11 +4,13 @@ public class Empregado {
 	private String nome;
 	private String sobrenome;
 	private double salarioMensal;
+	private static int numDeEmpregados = 0;
 	
 	public Empregado(String nome, String sobrenome, double salarioMensal) {
 		this.setNome(nome);
 		this.setSobrenome(sobrenome);
 		this.setSalarioMensal(salarioMensal);
+		Empregado.numDeEmpregados++;
 	}
 	
 	public void receberAumento(double aumentoEmPercentual) {
@@ -32,5 +34,8 @@ public class Empregado {
 	}
 	public void setSalarioMensal(double salarioMensal) {
 		this.salarioMensal = salarioMensal;
+	}
+	public int getNumDeEmpregados() {
+		return numDeEmpregados;
 	}
 }
