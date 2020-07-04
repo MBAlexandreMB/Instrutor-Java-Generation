@@ -8,35 +8,32 @@ public class Endereco {
 		private String cep;
 		private String complemento;
 		
-		public Endereco(String rua, String bairro, String cidade, String estado, String cep, String complemento) {
-			if (rua == "" || !(rua instanceof String)) {
-				System.out.println("Rua precisa ser preenchida!");
-				return;
+		public Endereco(
+				String rua, String bairro, String cidade,
+				String estado, String cep, String complemento
+		) throws Exception {
+			if (rua == "" || rua == null) { // ERRO PRECISA DAR THROW, SE VIRA
+				throw new Exception("Rua precisa ser preenchida");
 			}
 			
-			if (bairro == "" || !(bairro instanceof String)) {
-				System.out.println("Bairro precisa ser preenchido!");
-				return;
+			if (bairro == "" || bairro == null) {
+				throw new Exception("Bairro precisa ser preenchido!");
 			}
 			
-			if (cidade == "" || !(cidade instanceof String)) {
-				System.out.println("Cidade precisa ser preenchida!");
-				return;
+			if (cidade == "" || cidade == null) {
+				throw new Exception("Cidade precisa ser preenchida!");
 			}
 			
-			if (estado == "" || !(estado instanceof String)) {
-				System.out.println("Estado precisa ser preenchido!");
-				return;
+			if (estado == "" || estado == null) {
+				throw new Exception("Estado precisa ser preenchido!");
 			}
 			
-			if (cep == "" || !(cep instanceof String)) {
-				System.out.println("CEP precisa ser preenchido!");
-				return;
+			if (cep == "" || cep == null) {
+				throw new Exception("CEP precisa ser preenchido!");
 			}
 			
-			if (complemento == "" || !(complemento instanceof String)) {
-				System.out.println("Complemento precisa ser preenchido!");
-				return;
+			if (complemento == "" || complemento == null) {
+				throw new Exception("Complemento precisa ser preenchido!");
 			}
 			
 			this.rua = rua;

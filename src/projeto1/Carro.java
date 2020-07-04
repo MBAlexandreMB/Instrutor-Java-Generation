@@ -16,10 +16,9 @@ public class Carro {
 	private short volumeDeCombustivel;
 	private byte marchaAtual;
 	
-	public Carro(Proprietario proprietario) {
-		if (!(proprietario instanceof Proprietario)) {
-			System.out.println("Proprietario deve ser uma instância da classe Proprietario");
-			return;
+	public Carro(Proprietario proprietario) throws Exception {
+		if (proprietario == null) {
+			throw new Exception("Proprietario não pode ser nulo!");
 		}
 		
 		this.proprietario = proprietario;
@@ -32,7 +31,6 @@ public class Carro {
 		
 		if (velFutura <= this.getVelocidadeMaxima()) {
 			this.setVelocidadeAtual(velFutura);
-			System.out.println("A velocidade aumentou para " + this.getVelocidadeAtual() + " km/h");
 		} else {
 			System.out.println("A velocidade máxima já foi atingida!");
 		}
@@ -46,13 +44,15 @@ public class Carro {
 	public void trocaMarcha(byte novaMarcha) {
 		if (novaMarcha <= numDeMarchas && novaMarcha >= -1) {
 			if (novaMarcha == -1 && !(this.getVelocidadeAtual() == 0)) {
-				System.out.println("Não é possível engatar a marcha ré com a velocidade diferente de 0km/h");
+				System.out.println("Não é possível engatar a marcha ré com a velocidade diferente de 0km/h.");
 				return;
 			}
 			this.setMarchaAtual(novaMarcha);
-			System.out.println(novaMarcha + "a marcha foi engatada.");
+			
+			String message = novaMarcha == -1 ? "Marcha ré foi engatada" : (novaMarcha + "a marcha foi engatada.");
+			System.out.println(message);
 		} else {
-			System.out.println("Marcha " + novaMarcha + " não existe nesse carro!");
+			System.out.println(novaMarcha + "a marcha não existe nesse carro!");
 		}
 	}
 	

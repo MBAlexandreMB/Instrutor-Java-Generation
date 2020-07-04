@@ -34,20 +34,39 @@ public class InteiroSet {
 		}
 	}
 	
-	public boolean[] getConjunto() {
-		return this.conjunto;
+	public void deleteElemento(int elemento) {
+		if (elemento >= 0 && elemento <= 100) {
+			this.conjunto[elemento] = false;
+		}
 	}
 	
-	public static void main(String[] args) {
-		InteiroSet cj1 = new InteiroSet();
-		InteiroSet cj2 = new InteiroSet();
-		cj2.insereElemento(5);
-		cj2.insereElemento(90);
-		cj1.insereElemento(90);
-
-		boolean[] resultado = InteiroSet.intersection(cj1.getConjunto(), cj2.getConjunto());
-		System.out.println(resultado[4]);
-		System.out.println(resultado[5]);
-		System.out.println(resultado[90]);
+	public String toSetString() {
+		String resposta = "";
+		
+		for (int i = 0; i < 101; i++) {
+			if (this.conjunto[i]) {
+				resposta += " " + i;				
+			}
+		}
+		
+		if (resposta == "") {
+			resposta = "-";
+		}
+		
+		return resposta.trim();
+	}
+	
+	public static boolean ehIgualTo(boolean[] cj1, boolean[] cj2) {
+		for (int i = 0; i < 101; i++) {
+			if (cj1[i] != cj2[i]) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	public boolean[] getConjunto() {
+		return this.conjunto;
 	}
 }
