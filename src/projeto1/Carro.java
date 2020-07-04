@@ -16,10 +16,6 @@ public class Carro {
 	private short volumeDeCombustivel;
 	private byte marchaAtual;
 	
-	Carro() throws Exception {
-		throw new Exception("");
-	}
-	
 	public Carro(Proprietario proprietario) throws Exception {
 		if (proprietario == null) {
 			throw new RuntimeException("Proprietario não pode ser nulo!");
