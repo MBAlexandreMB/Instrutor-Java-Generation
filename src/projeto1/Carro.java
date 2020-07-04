@@ -28,12 +28,7 @@ public class Carro {
 	
 	public void acelera() {
 		int velFutura = this.getVelocidadeAtual() + 1;
-		
-		if (velFutura <= this.getVelocidadeMaxima()) {
-			this.setVelocidadeAtual(velFutura);
-		} else {
-			System.out.println("A velocidade máxima já foi atingida!");
-		}
+		this.setVelocidadeAtual(velFutura);
 	}
 	
 	public void freia() {
@@ -111,7 +106,11 @@ public class Carro {
 		return velocidadeAtual;
 	}
 	public void setVelocidadeAtual(int velocidadeAtual) {
-		this.velocidadeAtual = velocidadeAtual;
+		if (velocidadeAtual <= this.getVelocidadeMaxima()) {
+			this.velocidadeAtual = velocidadeAtual > 0 ? velocidadeAtual : 0;	
+		} else {
+			System.out.println("Não é possível ter uma velocidade maior que a velocidade máxima!");
+		}
 	}
 	public byte getNumDePortas() {
 		return numDePortas;
