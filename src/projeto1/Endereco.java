@@ -12,28 +12,28 @@ public class Endereco {
 				String rua, String bairro, String cidade,
 				String estado, String cep, String complemento
 		) throws Exception {
-			if (rua == "" || rua == null) { // ERRO PRECISA DAR THROW, SE VIRA
-				throw new Exception("Rua precisa ser preenchida");
+			if (rua == "" || rua == null) {
+				throw new RuntimeException("Rua precisa ser preenchida");
 			}
 			
 			if (bairro == "" || bairro == null) {
-				throw new Exception("Bairro precisa ser preenchido!");
+				throw new RuntimeException("Bairro precisa ser preenchido!");
 			}
 			
 			if (cidade == "" || cidade == null) {
-				throw new Exception("Cidade precisa ser preenchida!");
+				throw new RuntimeException("Cidade precisa ser preenchida!");
 			}
 			
 			if (estado == "" || estado == null) {
-				throw new Exception("Estado precisa ser preenchido!");
+				throw new RuntimeException("Estado precisa ser preenchido!");
 			}
 			
 			if (cep == "" || cep == null) {
-				throw new Exception("CEP precisa ser preenchido!");
+				throw new RuntimeException("CEP precisa ser preenchido!");
 			}
 			
 			if (complemento == "" || complemento == null) {
-				throw new Exception("Complemento precisa ser preenchido!");
+				throw new RuntimeException("Complemento precisa ser preenchido!");
 			}
 			
 			this.rua = rua;

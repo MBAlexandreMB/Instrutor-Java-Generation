@@ -16,14 +16,18 @@ public class Carro {
 	private short volumeDeCombustivel;
 	private byte marchaAtual;
 	
+	Carro() throws Exception {
+		throw new Exception("");
+	}
+	
 	public Carro(Proprietario proprietario) throws Exception {
 		if (proprietario == null) {
-			throw new Exception("Proprietario não pode ser nulo!");
+			throw new RuntimeException("Proprietario não pode ser nulo!");
 		}
 		
-		this.proprietario = proprietario;
-		this.marchaAtual = 0;
-		this.velocidadeAtual = 0;
+		this.setProprietario(proprietario);
+		this.setMarchaAtual((byte) 0);
+		this.setVelocidadeAtual(0);
 	}
 	
 	public void acelera() {

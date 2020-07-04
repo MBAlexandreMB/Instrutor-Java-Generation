@@ -18,25 +18,21 @@ public class Proprietario {
 	//	private String complemento;
 	// ---------------------
 
-	public Proprietario(String nome, String cpf, String rg, Endereco endereco) {
-		if (nome == "" || !(nome instanceof String)) {
-			System.out.println("Nome precisa ser preenchido!");
-			return;
+	public Proprietario(String nome, String cpf, String rg, Endereco endereco) throws Exception {
+		if (nome == "" || nome == null) {
+			throw new RuntimeException("Nome precisa ser preenchido!");
 		}
 		
-		if (cpf == "" || !(cpf instanceof String)) {
-			System.out.println("CPF precisa ser preenchido!");
-			return;
+		if (cpf == "" || cpf == null) {
+			throw new RuntimeException("CPF precisa ser preenchido!");
 		}
 		
-		if (rg == "" || !(rg instanceof String)) {
-			System.out.println("RG precisa ser preenchido!");
-			return;
+		if (rg == "" || rg == null) {
+			throw new RuntimeException("RG precisa ser preenchido!");
 		}
 		
-		if (!(endereco instanceof Endereco)) {
-			System.out.println("Endereco precisa ser uma instância da classe Endereco");
-			return;
+		if (endereco == null) {
+			throw new RuntimeException("Endereco precisa ser uma instância da classe Endereco");
 		}
 		
 		this.nome = nome;
