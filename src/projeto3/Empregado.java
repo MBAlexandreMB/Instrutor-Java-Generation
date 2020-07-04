@@ -4,7 +4,7 @@ public class Empregado {
 	private String nome;
 	private String sobrenome;
 	private double salarioMensal;
-	private static int numDeEmpregados = 0;
+	public static int numDeEmpregados = 0;
 	
 	public Empregado(String nome, String sobrenome, double salarioMensal) {
 		this.setNome(nome);
@@ -34,8 +34,5 @@ public class Empregado {
 	}
 	public void setSalarioMensal(double salarioMensal) {
 		this.salarioMensal = salarioMensal;
-	}
-	public int getNumDeEmpregados() {
-		return numDeEmpregados;
 	}
 }

@@ -58,16 +58,11 @@ public class Projeto1 {
 
 		System.out.println("Acelerando!");
 		novoCarro.trocaMarcha((byte) 1);
-		novoCarro.acelera();
-		novoCarro.acelera();
-		novoCarro.acelera();
-		novoCarro.acelera();
-		novoCarro.acelera();
-		novoCarro.acelera();
-		novoCarro.acelera();
-		novoCarro.acelera();
-		novoCarro.acelera();
-		novoCarro.acelera();
+		
+		for (int i = 0; i < 121; i++) {
+			novoCarro.acelera();		
+		}
+		
 		System.out.println(" ");
 		System.out.println("Tentando engatar a ré!");
 		novoCarro.trocaMarcha((byte) -1);
