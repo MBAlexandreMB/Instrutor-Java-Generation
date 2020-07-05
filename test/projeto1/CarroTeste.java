@@ -47,10 +47,7 @@ class CarroTeste {
 	@Test
 	@DisplayName("Todo carro tem um proprietário")
 	void falhaSeInstanciaSemProprietario() {
-		// Ao tentar criar uma instância de carro, o proprietário deve ser passado.
-		// A tentativa de instanciar com "null" retorna a mensagem "Proprietario não pode ser nulo!"
 		Exception exception = assertThrows(RuntimeException.class, () -> new Carro(null));
-		
 		assertEquals(exception.getMessage(), "Proprietario não pode ser nulo!");
 	}
 	
