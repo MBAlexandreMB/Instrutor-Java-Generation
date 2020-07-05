@@ -58,7 +58,10 @@ public class Proprietario {
 	public LocalDate getDataDeNascimento() {
 		return dataDeNascimento;
 	}
-	public void setDataDeNascimento(LocalDate dataDeNascimento) {
+	public void setDataDeNascimento(LocalDate dataDeNascimento) throws Exception {
+		if (dataDeNascimento == null) {
+			throw new RuntimeException("Data de nascimento não pode ser nula!");
+		}
 		this.dataDeNascimento = dataDeNascimento;
 	}
 	public Endereco getEndereco() {

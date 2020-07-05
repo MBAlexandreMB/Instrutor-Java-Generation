@@ -9,7 +9,11 @@ public class Marca {
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
+	public void setNome(String nome) throws Exception {
+		if (nome == null) {
+			throw new RuntimeException("Nome não pode ser nulo!");
+		}
+		
 		this.nome = nome;
 	}
 	public short getNrDeModelos() {

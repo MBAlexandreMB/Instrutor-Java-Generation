@@ -146,7 +146,7 @@ public class Carro {
 	public byte getMarchaAtual() {
 		return marchaAtual;
 	}
-	public void setMarchaAtual(byte marchaAtual) {
+	private void setMarchaAtual(byte marchaAtual) {
 		this.marchaAtual = marchaAtual;
 	}
 }

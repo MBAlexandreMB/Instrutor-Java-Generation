@@ -29,36 +29,53 @@ class FaturaTeste1 {
 		}
 	}
 	
+
 	@Test
-	@DisplayName("Número e descrição da fatura não podem ser vazios ou nulos")
-	void naoDeveInstanciarFaturaSemAtributosObrigatorios() {
-		Exception exceptionNum = assertThrows(
+	@DisplayName("Número da fatura não pode ser vazio")
+	void numeroDeFaturaNaoPodeSerVazio() {
+		Exception exception = assertThrows(
 				RuntimeException.class,
 				() -> new Fatura("", "d", 1, 1)
 		);
-		Exception exceptionNumNull = assertThrows(
+		
+		assertEquals(exception.getMessage(), "É necessário informar um número de fatura!");
+	}
+	
+	@Test
+	@DisplayName("Número da fatura não pode ser nulo")
+	void numeroDeFaturaNaoPodeSerNulo() {
+		Exception exception = assertThrows(
 				RuntimeException.class,
 				() -> new Fatura(null, "d", 1, 1)
 		);
 		
-		Exception exceptionDesc = assertThrows(
+		assertEquals(exception.getMessage(), "É necessário informar um número de fatura!");
+	}
+	
+	@Test
+	@DisplayName("Descrição da fatura não pode ser vazia")
+	void descricaoDeFaturaNaoPodeSerVazia() {
+		Exception exception = assertThrows(
 				RuntimeException.class,
 				() -> new Fatura("1", "", 1, 1)
-		);		
-		Exception exceptionDescNull = assertThrows(
+		);
+		
+		assertEquals(exception.getMessage(), "É necessário informar uma descrição para a fatura!");
+	}
+	
+	@Test
+	@DisplayName("Descrição da fatura não pode ser nula")
+	void descricaoDeFaturaNaoPodeSerNula() {
+		Exception exception = assertThrows(
 				RuntimeException.class,
 				() -> new Fatura("1", null, 1, 1)
 		);
 		
-		assertEquals(exceptionNum.getMessage(), "É necessário informar um número de fatura!");
-		assertEquals(exceptionNumNull.getMessage(), "É necessário informar um número de fatura!");
-		
-		assertEquals(exceptionDesc.getMessage(), "É necessário informar uma descrição para a fatura!");
-		assertEquals(exceptionDescNull.getMessage(), "É necessário informar uma descrição para a fatura!");
+		assertEquals(exception.getMessage(), "É necessário informar uma descrição para a fatura!");
 	}
 	
 	@Test
-	@DisplayName("Um preço negativo deveria ser salvo como 0.0")
+	@DisplayName("Um preço negativo deve ser salvo como 0.0")
 	void deveSalvarPrecosNegativosComoZero() {
 		novaFatura.setPrecoItem(-10);
 		assertEquals(0.0, novaFatura.getPrecoItem());
@@ -72,7 +89,7 @@ class FaturaTeste1 {
 	}
 	
 	@Test
-	@DisplayName("Deveria calcular o valor total da fatura")
+	@DisplayName("Deve calcular o valor total da fatura")
 	void deveCalcularTotalFatura() {
 		assertEquals(20.0, novaFatura.getTotalFatura());
 	}
@@ -84,5 +101,60 @@ class FaturaTeste1 {
 		novaFatura.setPrecoItem(2);
 		assertEquals(0.0, novaFatura.getTotalFatura());
 	}
-
+	
+	@Test
+	@DisplayName("Pode alterar o número da fatura")
+	void devePoderAlterarNumero() {
+		try {
+			novaFatura.setNumero("2F");
+			assertEquals("2F", novaFatura.getNumero());
+		} catch (Exception e) {
+			fail("Erro ao alterar número da fatura: " + e);
+		}
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para número vazio")
+	void naoDevePoderAlterarParaNumeroVazio() {
+		Exception exception = assertThrows(RuntimeException.class, () -> novaFatura.setNumero(""));
+		assertEquals(exception.getMessage(), "É necessário informar um número de fatura!");
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para número nulo")
+	void naoDevePoderAlterarParaNumeroNulo() {
+		Exception exception = assertThrows(RuntimeException.class, () -> novaFatura.setNumero(null));
+		assertEquals(exception.getMessage(), "É necessário informar um número de fatura!");
+	}
+	
+	@Test
+	@DisplayName("Pode alterar a descrição da fatura")
+	void devePoderAlterarDescricao() {
+		try {
+			novaFatura.setDescricao("d2");
+			assertEquals("d2", novaFatura.getDescricao());
+		} catch (Exception e) {
+			fail("Erro ao alterar descricao da fatura: " + e);
+		}
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para descrição vazia")
+	void naoDevePoderAlterarParaDescricaoVazia() {
+		Exception exception = assertThrows(
+				RuntimeException.class,
+				() -> novaFatura.setDescricao("")
+		);
+		assertEquals(exception.getMessage(), "É necessário informar uma descrição para a fatura!");
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para número nulo")
+	void naoDevePoderAlterarParaDescricaoNula() {
+		Exception exception = assertThrows(
+				RuntimeException.class,
+				() -> novaFatura.setDescricao(null)
+		);
+		assertEquals(exception.getMessage(), "É necessário informar uma descrição para a fatura!");
+	}
 }

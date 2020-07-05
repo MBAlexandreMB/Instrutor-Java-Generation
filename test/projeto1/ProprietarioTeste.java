@@ -40,7 +40,7 @@ class ProprietarioTeste {
 	}
 	
 	@Test
-	@DisplayName("O endereço do proprietário não pode ser vazio")
+	@DisplayName("O endereço do proprietário não pode ser nulo")
 	void falhaSeInstanciaSemProprietario() {
 		Exception exception = assertThrows(
 				RuntimeException.class, 
@@ -49,40 +49,175 @@ class ProprietarioTeste {
 		
 		assertEquals(exception.getMessage(), "Endereco precisa ser uma instância da classe Endereco");
 	}
-
+	
 	@Test
-	@DisplayName("Os atributos nome, cpf e rg são obrigatórios")
-	void falhaSeInstanciaSemAtributosObrigatorios() {
-		Exception exceptionNome = assertThrows(
+	@DisplayName("Nome não pode ser vazio ao instanciar")
+	void falhaSeInstanciaComNomeVazio() {
+		Exception exception = assertThrows(
 				RuntimeException.class, 
 				() -> new Proprietario("", "b", "c", novoEndereco)
 		);
 		
-		Exception exceptionCpf = assertThrows(
+		assertEquals(exception.getMessage(), "Nome precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("Nome não pode ser nulo ao instanciar")
+	void falhaSeInstanciaComNomeNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> new Proprietario(null, "b", "c", novoEndereco)
+		);
+		
+		assertEquals(exception.getMessage(), "Nome precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("CPF não pode ser vazio ao instanciar")
+	void falhaSeInstanciaComCpfVazio() {
+		Exception exception = assertThrows(
 				RuntimeException.class, 
 				() -> new Proprietario("a", "", "c", novoEndereco)
 		);
 		
-		Exception exceptionRg = assertThrows(
+		assertEquals(exception.getMessage(), "CPF precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("CPF não pode ser nulo ao instanciar")
+	void falhaSeInstanciaComCpfNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> new Proprietario("a", null, "c", novoEndereco)
+		);
+		
+		assertEquals(exception.getMessage(), "CPF precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("RG não pode ser vazio ao instanciar")
+	void falhaSeInstanciaComRgVazio() {
+		Exception exception = assertThrows(
 				RuntimeException.class, 
 				() -> new Proprietario("a", "b", "", novoEndereco)
 		);
 		
-		assertEquals(exceptionNome.getMessage(), "Nome precisa ser preenchido!");
-		assertEquals(exceptionCpf.getMessage(), "CPF precisa ser preenchido!");
-		assertEquals(exceptionRg.getMessage(), "RG precisa ser preenchido!");
+		assertEquals(exception.getMessage(), "RG precisa ser preenchido!");
+	}
+
+	@Test
+	@DisplayName("RG não pode ser nulo ao instanciar")
+	void falhaSeInstanciaComRgNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> new Proprietario("a", "b", null, novoEndereco)
+		);
+		
+		assertEquals(exception.getMessage(), "RG precisa ser preenchido!");
 	}
 	
 	@Test
-	@DisplayName("É possível alterar os dados de um proprietario")
-	void devePoderAlterarDadosDoProprietario() {
+	@DisplayName("É possível alterar nome")
+	void devePoderAlterarNome() {
 		try {
-			novoProprietario.setCpf("cpf1");
-			assertEquals("cpf1", novoProprietario.getCpf());
+			novoProprietario.setNome("nome2");
+			assertEquals("nome2", novoProprietario.getNome());
+		} catch (Exception e) {
+			fail("Erro ao alterar nome: " + e);
+		}
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar nome para vazio")
+	void naoDevePoderAlterarNomeParaVazio() {
+		Exception exception = assertThrows(
+				RuntimeException.class,
+				() -> novoProprietario.setNome("")
+		);
+			
+		assertEquals(exception.getMessage(), "Nome precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar nome para nulo")
+	void naoDevePoderAlterarNomeParaNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class,
+				() -> novoProprietario.setNome(null)
+		);
+			
+		assertEquals(exception.getMessage(), "Nome precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("É possível alterar CPF")
+	void devePoderAlterarCpf() {
+		try {
+			novoProprietario.setCpf("321");
+			assertEquals("321", novoProprietario.getCpf());
 		} catch (Exception e) {
 			fail("Erro ao alterar CPF: " + e);
 		}
-		
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar CPF para vazio")
+	void naoDevePoderAlterarCpfParaVazio() {
+		Exception exception = assertThrows(
+				RuntimeException.class,
+				() -> novoProprietario.setCpf("")
+		);
+			
+		assertEquals(exception.getMessage(), "CPF precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar CPF para nulo")
+	void naoDevePoderAlterarCpfParaNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class,
+				() -> novoProprietario.setCpf(null)
+		);
+			
+		assertEquals(exception.getMessage(), "CPF precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("É possível alterar RG")
+	void devePoderAlterarRg() {
+		try {
+			novoProprietario.setRg("321");
+			assertEquals("321", novoProprietario.getRg());
+		} catch (Exception e) {
+			fail("Erro ao alterar RG: " + e);
+		}
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar RG para vazio")
+	void naoDevePoderAlterarRgParaVazio() {
+		Exception exception = assertThrows(
+				RuntimeException.class,
+				() -> novoProprietario.setRg("")
+		);
+			
+		assertEquals(exception.getMessage(), "RG precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar RG para nulo")
+	void naoDevePoderAlterarRgParaNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class,
+				() -> novoProprietario.setRg(null)
+		);
+			
+		assertEquals(exception.getMessage(), "RG precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("É possível adicionar a data de nascimento")
+	void devePoderAdicionarDataDeNascimento() {
 		try {
 			LocalDate dataNascimento = LocalDate.of(1991, 10, 4);
 			novoProprietario.setDataDeNascimento(dataNascimento);
@@ -90,27 +225,16 @@ class ProprietarioTeste {
 		} catch (Exception e) {
 			fail("Erro ao alterar data de nascimento: " + e);
 		}
-
-		try {
-			novoProprietario.setNome("nome1");
-			assertEquals("nome1", novoProprietario.getNome());
-		} catch (Exception e) {
-			fail("Erro ao alterar Nome: " + e);
-		}
-		
-		try {
-			novoProprietario.setRg("rg1");
-			assertEquals("rg1", novoProprietario.getRg());
-		} catch (Exception e) {
-			fail("Erro ao alterar RG: " + e);
-		}
-		
-		try {
-			Endereco endereco1 = new Endereco("rua1", "bairro1", "cidade1", "estado1", "cep1", "comp1");			
-			novoProprietario.setEndereco(endereco1);
-			assertSame(endereco1, novoProprietario.getEndereco());
-		} catch (Exception e) {
-			fail("Não foi possível criar um novo endereço");
-		}
+	}
+	
+	@Test
+	@DisplayName("Data de nascimento não pode ser nula")
+	void naoDevePoderAdicionarDataDeNascimentoNula() {
+		Exception exception = assertThrows(
+				RuntimeException.class,
+				() -> novoProprietario.setDataDeNascimento(null)
+		);
+			
+		assertEquals(exception.getMessage(), "Data de nascimento não pode ser nula!");
 	}
 }

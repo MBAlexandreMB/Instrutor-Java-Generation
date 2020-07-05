@@ -26,7 +26,10 @@ class EnderecoTeste {
 	void instanciaUmNovoEndereco() {
 		try {
 			
-			Endereco endereco = new Endereco("rua1", "bairro2", "cidade3", "estado4", "cep5", "comp6");
+			Endereco endereco = new Endereco(
+					"rua1", "bairro2", "cidade3",
+					"estado4", "cep5", "comp6"
+			);
 			assertTrue(endereco instanceof Endereco);
 		} catch (Exception e) {
 			fail(e.getMessage());
@@ -34,42 +37,107 @@ class EnderecoTeste {
 	}
 
 	@Test
-	@DisplayName("Os atributos do endereco são obrigatórios")
-	void falhaSeInstanciaSemAtributosObrigatorios() {
-		Exception exceptionRua = assertThrows(
+	@DisplayName("O atributo rua não pode ser vazio")
+	void falhaSeInstanciaComRuaVazia() {
+		Exception exception = assertThrows(
 				RuntimeException.class, 
 				() -> new Endereco("", "b", "c", "d", "e", "f")
 		);
-		
-		Exception exceptionBairro = assertThrows(
-				RuntimeException.class, 
-				() -> new Endereco("a", "", "c", "d", "e", "f")
-		);
-		
-		Exception exceptionCidade = assertThrows(
-				RuntimeException.class, 
-				() -> new Endereco("a", "b", "", "d", "e", "f")
-		);
-		
-		Exception exceptionEstado = assertThrows(
-				RuntimeException.class, 
-				() -> new Endereco("a", "b", "c", "", "e", "f")
-		);
-		
-		Exception exceptionCep = assertThrows(
-				RuntimeException.class, 
-				() -> new Endereco("a", "b", "c", "d", "", "f")
-		);
-		
-		assertEquals(exceptionRua.getMessage(), "Rua precisa ser preenchida!");
-		assertEquals(exceptionBairro.getMessage(), "Bairro precisa ser preenchido!");
-		assertEquals(exceptionCidade.getMessage(), "Cidade precisa ser preenchida!");
-		assertEquals(exceptionEstado.getMessage(), "Estado precisa ser preenchido!");
-		assertEquals(exceptionCep.getMessage(), "CEP precisa ser preenchido!");
+		assertEquals(exception.getMessage(), "Rua precisa ser preenchida!");
 	}
 	
 	@Test
-	@DisplayName("Complemento pode ser '', mas não pode ser nulo")
+	@DisplayName("O atributo rua não pode ser nulo")
+	void falhaSeInstanciaComRuaNula() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> new Endereco(null, "b", "c", "d", "e", "f")
+		);
+		assertEquals(exception.getMessage(), "Rua precisa ser preenchida!");
+	}
+	
+	@Test
+	@DisplayName("O atributo bairro não pode ser vazio")
+	void falhaSeInstanciaComBairroVazio() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> new Endereco("a", "", "c", "d", "e", "f")
+		);
+		assertEquals(exception.getMessage(), "Bairro precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("O atributo bairro não pode ser nulo")
+	void falhaSeInstanciaComBairroNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> new Endereco("a", null, "c", "d", "e", "f")
+		);
+		assertEquals(exception.getMessage(), "Bairro precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("O atributo cidade não pode ser vazio")
+	void falhaSeInstanciaComCidadeVazia() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> new Endereco("a", "b", "", "d", "e", "f")
+		);
+		assertEquals(exception.getMessage(), "Cidade precisa ser preenchida!");
+	}
+	
+	@Test
+	@DisplayName("O atributo cidade não pode ser nulo")
+	void falhaSeInstanciaComCidadeNula() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> new Endereco("a", "b", null, "d", "e", "f")
+		);
+		assertEquals(exception.getMessage(), "Cidade precisa ser preenchida!");
+	}
+	
+	@Test
+	@DisplayName("O atributo estado não pode ser vazio")
+	void falhaSeInstanciaComEstadoVazio() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> new Endereco("a", "b", "c", "", "e", "f")
+		);
+		assertEquals(exception.getMessage(), "Estado precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("O atributo estado não pode ser nulo")
+	void falhaSeInstanciaComEstadoNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> new Endereco("a", "b", "c", null, "e", "f")
+		);
+		assertEquals(exception.getMessage(), "Estado precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("O atributo CEP não pode ser vazio")
+	void falhaSeInstanciaComCepVazio() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> new Endereco("a", "b", "c", "d", "", "f")
+		);
+		assertEquals(exception.getMessage(), "CEP precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("O atributo CEP não pode ser nulo")
+	void falhaSeInstanciaComCepNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> new Endereco("a", "b", "c", "d", null, "f")
+		);
+		assertEquals(exception.getMessage(), "CEP precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("Complemento pode ser vazio, mas não pode ser nulo")
 	void falhaSeInstanciaComComplementoNulo() {
 		try {
 			Endereco compVazio = new Endereco("a", "b", "c", "d", "e", "");			
@@ -87,48 +155,152 @@ class EnderecoTeste {
 	}
 	
 	@Test
-	@DisplayName("É possível alterar os dados de um endereco")
-	void devePoderAlterarDadosDoEndereco() {
+	@DisplayName("Deve alterar a rua")
+	void devePoderAlterarRua() {
 		try {
-			novoEndereco.setRua("rua1");
-			assertEquals("rua1", novoEndereco.getRua());
+			novoEndereco.setRua("rua3");			
 		} catch (Exception e) {
-			fail("Erro ao alterar rua:", e);
+			fail("Erro ao tentar alterar rua:" + e);
 		}
-		
-		try {
-			novoEndereco.setBairro("bairro1");
-			assertEquals("bairro1", novoEndereco.getBairro());	
-		} catch (Exception e) {
-			fail("Erro ao alterar bairro:", e);
-		}
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para rua vazia")
+	void naoDeveAlterarParaRuaVazia() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> novoEndereco.setRua("")
+		);
+		assertEquals(exception.getMessage(), "Rua precisa ser preenchida!");
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para rua nula")
+	void naoDeveAlterarParaRuaNula() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> novoEndereco.setRua(null)
+		);
+		assertEquals(exception.getMessage(), "Rua precisa ser preenchida!");
+	}
 
+	@Test
+	@DisplayName("Deve alterar o bairro")
+	void devePoderAlterarBairro() {
 		try {
-			novoEndereco.setCidade("cidade1");
-			assertEquals("cidade1", novoEndereco.getCidade());
+			novoEndereco.setBairro("bairro3");			
 		} catch (Exception e) {
-			fail("Erro ao alterar cidade:", e);
+			fail("Erro ao tentar alterar estado:" + e);
 		}
-		
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para bairro vazio")
+	void naoDeveAlterarParaBairroVazio() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> novoEndereco.setBairro("")
+		);
+		assertEquals(exception.getMessage(), "Bairro precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para bairro nulo")
+	void naoDeveAlterarParaBairroNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> novoEndereco.setBairro(null)
+		);
+		assertEquals(exception.getMessage(), "Bairro precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("Deve alterar a cidade")
+	void devePoderAlterarCidade() {
 		try {
-			novoEndereco.setEstado("estado1");
-			assertEquals("estado1", novoEndereco.getEstado());
+			novoEndereco.setCidade("cidade3");			
 		} catch (Exception e) {
-			fail("Erro ao alterar estado:", e);
+			fail("Erro ao tentar alterar cidade:" + e);
 		}
-		
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para cidade vazia")
+	void naoDeveAlterarParaCidadeVazia() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> novoEndereco.setCidade("")
+		);
+		assertEquals(exception.getMessage(), "Cidade precisa ser preenchida!");
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para cidade nula")
+	void naoDeveAlterarParaCidadeNula() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> novoEndereco.setCidade(null)
+		);
+		assertEquals(exception.getMessage(), "Cidade precisa ser preenchida!");
+	}
+	
+	@Test
+	@DisplayName("Deve alterar o estado")
+	void devePoderAlterarEstado() {
 		try {
-			novoEndereco.setCep("cep1");
-			assertEquals("cep1", novoEndereco.getCep());
+			novoEndereco.setEstado("estado3");			
 		} catch (Exception e) {
-			fail("Erro ao alterar cep:", e);
+			fail("Erro ao tentar alterar estado:" + e);
 		}
-
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para estado vazio")
+	void naoDeveAlterarParaEstadoVazio() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> novoEndereco.setEstado("")
+		);
+		assertEquals(exception.getMessage(), "Estado precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para estado nulo")
+	void naoDeveAlterarParaEstadoNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> novoEndereco.setEstado(null)
+		);
+		assertEquals(exception.getMessage(), "Estado precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("Deve alterar o CEP")
+	void devePoderAlterarCep() {
 		try {
-			novoEndereco.setComplemento("comp1");
-			assertEquals("comp1", novoEndereco.getComplemento());	
+			novoEndereco.setCep("cep3");			
 		} catch (Exception e) {
-			fail("Erro ao alterar complemento:", e);
+			fail("Erro ao tentar alterar CEP:" + e);
 		}
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para CEP vazio")
+	void naoDeveAlterarParaCepVazio() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> novoEndereco.setCep("")
+		);
+		assertEquals(exception.getMessage(), "CEP precisa ser preenchido!");
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para CEP nulo")
+	void naoDeveAlterarParaCepNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> novoEndereco.setCep(null)
+		);
+		assertEquals(exception.getMessage(), "CEP precisa ser preenchido!");
 	}
 }

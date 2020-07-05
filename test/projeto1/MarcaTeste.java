@@ -34,17 +34,43 @@ class MarcaTeste {
 	}
 	
 	@Test
-	@DisplayName("É possível alterar os dados de uma Marca")
-	void devePoderAlterarDadosDoEndereco() {
-		novaMarca.setNome("nomeDaMarca");
-		assertEquals("nomeDaMarca", novaMarca.getNome());
-		
+	@DisplayName("É possível alterar nome")
+	void devePoderAlterarNome() {
+		try {
+			novaMarca.setNome("nome1");
+			assertEquals("nome1", novaMarca.getNome());
+		} catch (Exception e) {
+			fail("Erro ao alterar nome:" + e);
+		}
+	}
+	
+	@Test
+	@DisplayName("Não pode alterar para nome nulo")
+	void naoDeveAlterarParaNomeNulo() {
+		Exception exception = assertThrows(
+				RuntimeException.class, 
+				() -> novaMarca.setNome(null)
+		);
+		assertEquals(exception.getMessage(), "Nome não pode ser nulo!");
+	}
+	
+	@Test
+	@DisplayName("É possível alterar AnoDeLancamento")
+	void devePoderAlterarAnoDeLancamento() {
 		novaMarca.setAnoDeLancamento((short) 1900);
 		assertEquals(1900, novaMarca.getAnoDeLancamento());
-		
+	}
+	
+	@Test
+	@DisplayName("É possível alterar CodId")
+	void devePoderAlterarCodId() {
 		novaMarca.setCodId(1);
 		assertEquals(1, novaMarca.getCodId());
-		
+	}
+	
+	@Test
+	@DisplayName("É possível alterar NrDeModelos")
+	void devePoderAlterarNrDeModelos() {
 		novaMarca.setNrDeModelos((short) 10);
 		assertEquals(10, novaMarca.getNrDeModelos());
 	}

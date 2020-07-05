@@ -1,7 +1,7 @@
 package projeto3;
 
 public class EmpregadoTeste {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Empregado empregado1 = new Empregado("João", "Arruda", 5000.00);
 		Empregado empregado2 = new Empregado("Maria", "Eclesiana", 6000.00);
 		
