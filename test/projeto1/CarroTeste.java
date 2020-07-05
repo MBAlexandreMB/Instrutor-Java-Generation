@@ -9,13 +9,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import projeto1.models.Carro;
+import projeto1.models.Endereco;
+import projeto1.models.Proprietario;
+
 class CarroTeste {
 	Endereco novoEndereco;
 	Proprietario novoProprietario;
 	Carro novoCarro;
 	
 	@BeforeEach
-	public void criaObjetosParaTestes() throws Exception {
+	public void criaObjetosParaTestes() {
 		try {
 			novoEndereco = new Endereco("1", "2", "3", "4", "5", "6");
 			novoProprietario = new Proprietario("a", "b", "c", novoEndereco);
@@ -31,7 +35,7 @@ class CarroTeste {
 	
 	@Test
 	@DisplayName("É possível instanciar um novo carro")
-	void instanciaUmNovoCarro() throws Exception {
+	void instanciaUmNovoCarro() {
 		try {
 			Carro carro = new Carro(novoProprietario);
 			assertTrue(carro instanceof Carro);
@@ -47,7 +51,7 @@ class CarroTeste {
 		// A tentativa de instanciar com "null" retorna a mensagem "Proprietario não pode ser nulo!"
 		Exception exception = assertThrows(RuntimeException.class, () -> new Carro(null));
 		
-		assertTrue(exception.getMessage().contains("Proprietario não pode ser nulo!"));
+		assertEquals(exception.getMessage(), "Proprietario não pode ser nulo!");
 	}
 	
 	@Test

@@ -1,4 +1,4 @@
-package projeto1;
+package projeto1.models;
 
 public class Carro {
 	private String modelo;
@@ -16,11 +16,7 @@ public class Carro {
 	private short volumeDeCombustivel;
 	private byte marchaAtual;
 	
-	public Carro(Proprietario proprietario) throws Exception {
-		if (proprietario == null) {
-			throw new RuntimeException("Proprietario não pode ser nulo!");
-		}
-		
+	public Carro(Proprietario proprietario) throws Exception {		
 		this.setProprietario(proprietario);
 		this.setMarchaAtual((byte) 0);
 		this.setVelocidadeAtual(0);
@@ -51,6 +47,7 @@ public class Carro {
 		}
 	}
 	
+	// Métodos com nome iniciado em underline são, convencionalmente, privados
 	private void _reduzMarcha() {
 		byte marchaFutura = (byte) (this.getMarchaAtual() - 1);
 		this.trocaMarcha(marchaFutura);
@@ -93,7 +90,11 @@ public class Carro {
 	public Proprietario getProprietario() {
 		return proprietario;
 	}
-	public void setProprietario(Proprietario proprietario) {
+	public void setProprietario(Proprietario proprietario) throws Exception {
+		if (proprietario == null) {
+			throw new RuntimeException("Proprietario não pode ser nulo!");
+		}
+		
 		this.proprietario = proprietario;
 	}
 	public short getVelocidadeMaxima() {

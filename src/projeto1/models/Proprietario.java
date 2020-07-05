@@ -1,4 +1,4 @@
-package projeto1;
+package projeto1.models;
 
 import java.time.LocalDate;
 
@@ -18,45 +18,41 @@ public class Proprietario {
 	//	private String complemento;
 	// ---------------------
 
-	public Proprietario(String nome, String cpf, String rg, Endereco endereco) throws Exception {
-		if (nome == "" || nome == null) {
-			throw new RuntimeException("Nome precisa ser preenchido!");
-		}
-		
-		if (cpf == "" || cpf == null) {
-			throw new RuntimeException("CPF precisa ser preenchido!");
-		}
-		
-		if (rg == "" || rg == null) {
-			throw new RuntimeException("RG precisa ser preenchido!");
-		}
-		
-		if (endereco == null) {
-			throw new RuntimeException("Endereco precisa ser uma instância da classe Endereco");
-		}
-		
-		this.nome = nome;
-		this.cpf = cpf;
-		this.rg = rg;
-		this.endereco = endereco;
+	public Proprietario(String nome, String cpf, String rg, Endereco endereco) throws Exception {		
+		this.setNome(nome);
+		this.setCpf(cpf);
+		this.setRg(rg);
+		this.setEndereco(endereco);
 	}
 	
 	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(String cpf) {
+	public void setCpf(String cpf) throws Exception {
+		if (cpf == "" || cpf == null) {
+			throw new RuntimeException("CPF precisa ser preenchido!");
+		}
+		
 		this.cpf = cpf;
 	}
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
+	public void setNome(String nome) throws Exception {
+		if (nome == "" || nome == null) {
+			throw new RuntimeException("Nome precisa ser preenchido!");
+		}
+		
 		this.nome = nome;
 	}
 	public String getRg() {
 		return rg;
 	}
-	public void setRg(String rg) {
+	public void setRg(String rg) throws Exception {
+		if (rg == "" || rg == null) {
+			throw new RuntimeException("RG precisa ser preenchido!");
+		}
+		
 		this.rg = rg;
 	}
 	public LocalDate getDataDeNascimento() {
@@ -68,7 +64,11 @@ public class Proprietario {
 	public Endereco getEndereco() {
 		return endereco;
 	}
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco(Endereco endereco) throws Exception {
+		if (endereco == null) {
+			throw new RuntimeException("Endereco precisa ser uma instância da classe Endereco");
+		}
+		
 		this.endereco = endereco;
 	}
 	

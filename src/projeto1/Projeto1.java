@@ -3,6 +3,11 @@ package projeto1;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import projeto1.models.Carro;
+import projeto1.models.Endereco;
+import projeto1.models.Marca;
+import projeto1.models.Proprietario;
+
 public class Projeto1 {
 
 	public static void main(String[] args) throws Exception {

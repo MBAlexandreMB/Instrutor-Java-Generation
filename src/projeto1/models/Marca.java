@@ -1,4 +1,4 @@
-package projeto1;
+package projeto1.models;
 
 public class Marca {
 	private String nome;

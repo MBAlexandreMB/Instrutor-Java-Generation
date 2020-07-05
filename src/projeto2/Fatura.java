@@ -6,7 +6,10 @@ public class Fatura {
 	private int quantComprada;
 	private double precoItem;
 	
-	public Fatura(String numero, String descricao, int quantComprada, double precoItem) {
+	public Fatura(
+			String numero, String descricao, int quantComprada,
+			double precoItem
+	) throws Exception {				
 		this.setNumero(numero);
 		this.setDescricao(descricao);
 		this.setQuantComprada(quantComprada);
@@ -21,13 +24,21 @@ public class Fatura {
 	public String getNumero() {
 		return numero;
 	}
-	public void setNumero(String numero) {
+	public void setNumero(String numero) throws Exception {
+		if (numero == "" || numero == null) {
+			throw new RuntimeException("É necessário informar um número de fatura!");
+		}
+		
 		this.numero = numero;
 	}
 	public String getDescricao() {
 		return descricao;
 	}
-	public void setDescricao(String descricao) {
+	public void setDescricao(String descricao) throws Exception {
+		if (descricao == "" || descricao == null) {
+			throw new RuntimeException("É necessário informar uma descrição para a fatura!");
+		}
+		
 		this.descricao = descricao;
 	}
 	public int getQuantComprada() {

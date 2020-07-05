@@ -1,7 +1,7 @@
 package projeto2;
 
 public class FaturaTeste {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Fatura novaFatura = new Fatura("1", "Mouse optico", 3, 15.5);
 		
 		System.out.println("Fatura:");
