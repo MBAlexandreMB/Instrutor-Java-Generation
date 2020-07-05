@@ -1,5 +1,12 @@
 package projeto4;
 
+/**
+ * 
+ * @author Alexandre Montesso Bonomi
+ * @since 02/06/2020
+ *
+ */
+
 public class InteiroSet {
 	
 	private boolean[] conjunto;

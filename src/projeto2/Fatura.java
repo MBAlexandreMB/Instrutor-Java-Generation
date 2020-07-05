@@ -1,5 +1,12 @@
 package projeto2;
 
+/**
+ * 
+ * @author Alexandre Montesso Bonomi
+ * @since 02/06/2020
+ *
+ */
+
 public class Fatura {
 	private String numero;
 	private String descricao;

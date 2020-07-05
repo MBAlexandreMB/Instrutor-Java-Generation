@@ -1,5 +1,12 @@
 package projeto1.models;
 
+/**
+ * 
+ * @author Alexandre Montesso Bonomi
+ * @since 02/06/2020
+ *
+ */
+
 public class Carro {
 	private String modelo;
 	private String cor;
@@ -8,30 +15,28 @@ public class Carro {
 	private String chassi;
 	private Proprietario proprietario;
 	private short velocidadeMaxima;
-	private int velocidadeAtual;
+	private int velocidadeAtual = 0;
 	private byte numDePortas;
 	private boolean temTetoSolar;
 	private byte numDeMarchas;
 	private boolean temCambioAutomatico;
 	private short volumeDeCombustivel;
-	private byte marchaAtual;
-	
-	public Carro(Proprietario proprietario) throws Exception {		
+	private byte marchaAtual = 0;
+
+	public Carro(Proprietario proprietario) throws Exception {
 		this.setProprietario(proprietario);
-		this.setMarchaAtual((byte) 0);
-		this.setVelocidadeAtual(0);
 	}
-	
+
 	public void acelera() {
 		int velFutura = this.getVelocidadeAtual() + 1;
 		this.setVelocidadeAtual(velFutura);
 	}
-	
+
 	public void freia() {
 		this.setVelocidadeAtual(0);
 		System.out.println("O carro freou (0km/h)!");
 	}
-	
+
 	public void trocaMarcha(byte novaMarcha) {
 		if (novaMarcha <= numDeMarchas && novaMarcha >= -1) {
 			if (novaMarcha == -1 && !(this.getVelocidadeAtual() == 0)) {
@@ -39,24 +44,24 @@ public class Carro {
 				return;
 			}
 			this.setMarchaAtual(novaMarcha);
-			
+
 			String message = novaMarcha == -1 ? "Marcha ré foi engatada" : (novaMarcha + "a marcha foi engatada.");
 			System.out.println(message);
 		} else {
 			System.out.println(novaMarcha + "a marcha não existe nesse carro!");
 		}
 	}
-	
+
 	// Métodos com nome iniciado em underline são, convencionalmente, privados
 	private void _reduzMarcha() {
 		byte marchaFutura = (byte) (this.getMarchaAtual() - 1);
 		this.trocaMarcha(marchaFutura);
 	}
-	
+
 	public int calculaAutonomia(int consumoMedioEmKmPorLitro) {
 		return this.getVolumeDeCombustivel() * consumoMedioEmKmPorLitro;
 	}
-	
+
 	public String getModelo() {
 		return modelo;
 	}
@@ -94,7 +99,7 @@ public class Carro {
 		if (proprietario == null) {
 			throw new RuntimeException("Proprietario não pode ser nulo!");
 		}
-		
+
 		this.proprietario = proprietario;
 	}
 	public short getVelocidadeMaxima() {
@@ -108,7 +113,7 @@ public class Carro {
 	}
 	public void setVelocidadeAtual(int velocidadeAtual) {
 		if (velocidadeAtual <= this.getVelocidadeMaxima()) {
-			this.velocidadeAtual = velocidadeAtual > 0 ? velocidadeAtual : 0;	
+			this.velocidadeAtual = velocidadeAtual > 0 ? velocidadeAtual : 0;
 		} else {
 			System.out.println("Não é possível ter uma velocidade maior que a velocidade máxima!");
 		}

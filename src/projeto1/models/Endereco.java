@@ -1,5 +1,12 @@
 package projeto1.models;
 
+/**
+ * 
+ * @author Alexandre Montesso Bonomi
+ * @since 02/06/2020
+ *
+ */
+
 public class Endereco {
 		private String rua;
 		private String bairro;

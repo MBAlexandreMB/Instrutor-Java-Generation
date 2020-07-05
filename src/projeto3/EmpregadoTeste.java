@@ -1,5 +1,12 @@
 package projeto3;
 
+/**
+ * 
+ * @author Alexandre Montesso Bonomi
+ * @since 02/06/2020
+ *
+ */
+
 public class EmpregadoTeste {
 	public static void main(String[] args) throws Exception {
 		Empregado empregado1 = new Empregado("João", "Arruda", 5000.00);

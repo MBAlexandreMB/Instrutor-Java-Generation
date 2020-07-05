@@ -1,5 +1,12 @@
 package projeto2;
 
+/**
+ * 
+ * @author Alexandre Montesso Bonomi
+ * @since 02/06/2020
+ *
+ */
+
 public class FaturaTeste {
 	public static void main(String[] args) throws Exception {
 		Fatura novaFatura = new Fatura("1", "Mouse optico", 3, 15.5);

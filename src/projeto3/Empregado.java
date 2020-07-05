@@ -1,5 +1,12 @@
 package projeto3;
 
+/**
+ * 
+ * @author Alexandre Montesso Bonomi
+ * @since 02/06/2020
+ *
+ */
+
 public class Empregado {
 	private String nome;
 	private String sobrenome;
